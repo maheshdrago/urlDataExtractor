@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepawali SEO-Domain Extractor</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@700&family=Poppins&display=swap');
+    
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+    .accordion-item{
+        box-shadow: 0 1px 11px 0 rgb(181, 181, 181);
+        margin-bottom: 8px;
+        padding: 5px;
+    }
+    .main-wrapper{
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        box-shadow: 0 1px 11px 0 rgb(181, 181, 181);
+        overflow: auto;
+    }
+    .container{
+        margin-top: 20px !important ;
+        width: min-content;
+    }
+    .main-wrapper textarea {
+        border: none !important;
+        overflow: auto !important;
+        outline: none;
+        padding: 14px !important;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+
+    }
+    .btn-primary{
+        background-color: #3b8ffc;
+        border: 1px solid #3b8ffc;
+    }
+    .btn-primary:hover{
+        background-color: #4294ff;
+        border: 1px solid #4294ff;
+    }
+    
+    
+
+    .links{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .links a{
+        text-decoration: underline;
+        color: black;
+        margin-right: 16px;
+        font-size: 11px;
+    }
+
+    @media (max-width:700px){
+        .links {
+            display: none;
+        }
+        body{
+            margin-top: 9px;
+        }
+    }
+
+    .navbar-links {
+        height: 80%;
+        margin-left: 20vw;
+        width: min-content;
+    }
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    white-space: nowrap;
+    display: inline;
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+}
+
+
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links li:hover {
+    background-color: rgb(207, 206, 206);
+}
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+.td-tagline-text{
+    letter-spacing: 1.8px;
+    font-size: 12px;
+    font-family: serif;
+    color: #777;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    margin-top: 1px !important;
+}
+    .menu-tab,.counter-tab{
+        margin-top: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .menu-tab button{
+        margin-right: 7px;
+        margin-bottom: 40px;
+    }
+    .accordion{
+        margin-bottom: 200px;
+    }
+    .unregistered-span{
+        padding: 3px;
+        border: 1px red solid;
+        color: white;
+        background-color: red;
+        border-radius: 4px
+    }
+    .registered-span{
+        padding: 3px;
+        border: 1px green solid;
+        color: white;
+        background-color: green;
+        border-radius: 4px
+    }
+    .horizontal{
+        display: flex;
+        flex-direction: row;
+        width: 30%;
+        justify-content: space-between;
+    }
+    #select-inp{
+        display: none;
+    }
+    .form-check{
+        margin-bottom: 10px;
+    }
+
+
+
+</style>
+<body>
+    <div class="header-div">
+        <div class="links">     
+            <p><a href="https://www.deepawaliseotips.com/about-us/">About us</a></p>
+            <p><a href="https://www.deepawaliseotips.com/digital-marketing-and-seo-consultancy-services-pavan-agrawal/">SEO Consultancy Services</a></p>
+            <p><a href="https://www.deepawaliseotips.com/privacy-policy/">Privacy Policy</a></p>
+            <p><a href="https://www.deepawaliseotips.com/disclaimer/">Disclaimer</a></p>
+            <p><a href="https://www.deepawaliseotips.com/terms-conditions/">Terms & Conditions</a></p>
+            <p><a href="https://www.deepawaliseotips.com/contact-us/">Contact Us</a></p>
+        </div>
+        <div class="title">
+            <center>
+                <h1 style="font-family: serif;font-size: 5vw;">SEO Pavan Agrawal</h1>
+                <span class="td-tagline-text">Remember Observe and React</span>
+            </center>
+            <hr>
+            
+        </div>
+        <nav class="navbar">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            
+
+            <div class="navbar-links">
+                <ul>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/">HOME</a>
+                    </li>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/category/start-a-blog/">START A BLOG</a>
+                    </li>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/category/hosting/">HOSTING</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/tools/">TOOLS [PAVAN AGRAWAL]</a>
+                    </li>
+                    <li>
+                        <a href="https://twittertrends.deepawaliseotips.com/">TWITTER TRENDS</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <hr>
+    <br>
+    <div class="container">
+        <div class="header-tab">
+            <h3>Domain Extractor</h3>
+        </div>
+
+        <div class="main-wrapper">
+            <textarea id="textArea" contenteditable="true" style="width:900px;height:330px;border:1px solid;overflow-y:scroll"  placeholder="Enter Urls seperated by new line to extract domains"></textarea>    
+        </div>
+        <br>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+            <label class="form-check-label" for="flexCheckDefault">
+                Include subdomains
+            </label>
+          </div>
+          
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+            <label class="form-check-label" for="flexCheckDefault">
+                Remove duplicates
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+            <label class="form-check-label" for="flexCheckDefault">
+                Convert domain to lowercase
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+            <label class="form-check-label" for="flexCheckDefault">
+                Sort results (0 to Z)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5">
+            <label class="form-check-label" for="flexCheckDefault">
+                Add the word ↓
+            </label>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Example : https://">
+          </div>
+
+        <div class="menu-tab" id="tab">
+            <button class="btn btn-primary" type="button" id="load-btn" onclick="test()">Generate</button>
+        </div>
+
+        <div class="row ">
+            <table class="table table-bordered" id="tableExample1">
+            </table>
+        </div>
+
+
+
+    </div>
+    
+</body>
+<script>
+    let flag = false;
+    let data;
+
+    const getDomainWithoutSubdomain = url => {
+        const urlParts = new URL(url).hostname.split('.')
+        return urlParts
+            .slice(0)
+            .slice(-(urlParts.length === 4 ? 3 : 2))
+            .join('.')
+    }
+
+    const getDomainName = url => {
+        const urlParts = new URL(url).hostname.split('.')
+        if(urlParts[0]=='www' || urlParts[0]=='WWW')
+            return urlParts.slice(1,urlParts.length).join('.')
+        else
+            return urlParts.slice(0,urlParts.length).join('.')
+    }
+    const test = () => {
+        const urls_text = document.getElementById('textArea').value.trim( );
+        let domains = []
+        let urls = urls_text.split('\n').map((ele)=>{
+            try{
+                if(document.getElementById('flexCheckDefault1').checked){
+                    domains.push(getDomainWithoutSubdomain(ele))
+                }
+                else{
+                    domains.push(getDomainName(ele))
+                }
+            }
+            catch{
+                alert("Please enter a valid URL")
+            }
+            
+        })
+
+        if(document.getElementById('flexCheckDefault2').checked){
+            domains = remove_duplicates(domains)
+        }
+
+        if(document.getElementById('flexCheckDefault3').checked){
+            domains = convert_to_lowercase(domains)
+        }
+
+        if(document.getElementById('flexCheckDefault4').checked){
+            domains = sort_domains(domains)
+        }
+
+        if(document.getElementById('flexCheckDefault5').checked){
+            const text = document.getElementById('exampleFormControlInput1').value
+            domains = append_text(domains, text)
+        }
+
+        const rows = domains.map((ele, idx)=>{
+            return `
+                <tr>
+                    <td>${idx+1}</td>
+                    <td>${ele}</td>
+                </tr>
+            `
+        })
+        .join('')
+
+        document.getElementById('tableExample1').innerHTML = `<tr>
+                    <th>No.</th>
+                    <th>Domain</th>
+                </tr> ${rows}`;
+        
+    }
+
+    const append_text = (domains, text) => {
+        return domains.map((ele) => {
+            return text+ele
+        })
+    }
+
+    const convert_to_lowercase = domains => {
+        return domains.map((ele)=>ele.toLowerCase())
+    }
+
+    const remove_duplicates = domains => {
+        return domains.filter((item, 
+            index) => domains.indexOf(item) === index);
+    }
+
+    const add_before_domain_name = (domains, text)=> {
+        const update_domains = domains.map((ele) => {
+            return text+ele;
+        })
+    }
+
+    const sort_domains = (domains) => {
+        const sorted = domains.sort((a,b)=> a-b)
+        return sorted
+    }
+
+
+
+</script>
+
+<script src="https://kit.fontawesome.com/411329c929.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+</html>
